@@ -1,0 +1,115 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Note from '~/components/widgets/Note.astro';
+import Content from '~/components/widgets/Content.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Kings Of Mercia',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent
+    isBeforeContent
+    isReversed
+    items={[
+      {
+        title: 'Blabbermouth review for "Battle Scars"',
+        description:
+          '"Battle Scars comprises ten eminently classy melodic metal anthems, with Overland the emotional glue that sticks it all together, and Matheos\'s immaculate guitar work running the gamut between out-and-out rockers and more thoughtful, nuanced fare. Slightly darker than its predecessor, it gets the balance between euphoric uplift and brooding disquiet exactly right."',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/battle_scars_cover.jpg',
+      alt: 'Kings Of Mercia - Battle Scars',
+      caption: 'Battle Scars (2024)',
+      captionJustification: 'center',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Kings Of Mercia</h3>
+      A heavy melodic rock project featuring Jim Matheos (Fates Warning), Steve Overland (FM), Joey Vera (Armored Saint, Fates
+      Warning), and Simon Phillips (ex-Toto).
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Note Widget ******************* -->
+
+  <Note title="Battle Scars" description="~ the acclaimed sophomore album out now via Metal Blade Records" />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent
+    isBeforeContent
+    image={{
+      src: '~/assets/images/battle_scars_cover.jpg',
+      alt: 'Battle Scars (2024)',
+      caption: 'Battle Scars (2024)',
+      captionJustification: 'center',
+    }}
+  >
+    <Fragment slot="content">
+      Check out the video for the single, "Don't Ask"<br /><br />
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/s2V0u66X37o"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- LatestPosts Widget ******* -->
+
+  <BlogLatestPosts
+    isBeforeContent
+    title="Latest News"
+    information={`The latest news, announcements, and updates from Kings Of Mercia.`}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    image={{
+      src: '~/assets/images/battle_scars_cover.jpg',
+      alt: 'Battle Scars',
+      width: 300,
+      height: 300,
+    }}
+    imagePosition="left"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Order Here',
+        href: 'https://www.metalblade.com/kingsofmercia/',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      <br class="block sm:hidden" /><span class="sm:whitespace-nowrap">"Battle Scars"</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">The acclaimed sophomore album. Out now via Metal Blade Records.</Fragment>
+  </CallToAction>
+</Layout>

@@ -1,0 +1,143 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Content from '~/components/widgets/Content.astro';
+
+const metadata = {
+  title: 'Music',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
+  <HeroText title="Music" tagline="Kings Of Mercia" />
+
+  <!-- Content Widget: Battle Scars (2024) ****************** -->
+  <Content
+    isAfterContent
+    isBeforeContent
+    isReversed={true}
+    image={{
+      src: '~/assets/images/battle_scars_cover.jpg',
+      alt: 'Kings Of Mercia - Battle Scars (2024)',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-4 font-heading">Battle Scars</h2>
+      <div class="space-y-4 text-justify">
+        <p>Released on October 25, 2024 via Metal Blade Records</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="mb-6 font-semibold dark:text-slate-200">
+        <p>Track List</p>
+      </div>
+      <div class="space-y-4 text-justify">
+        <p>
+          1. Guns and Ammunition<br />
+          2. Eye for an Eye<br />
+          3. Between Two Worlds<br />
+          4. Legend<br />
+          5. Battle Scars<br />
+          6. Don't Ask<br />
+          7. Aftermath<br />
+          8. Hell 'n' Back<br />
+          9. Cold<br />
+          10. Angels & Demons
+        </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="mb-6 font-semibold dark:text-slate-200">
+        <p>Kings Of Mercia Lineup</p>
+        <p>Steve Overland: Vocals</p>
+        <p>Jim Matheos: Guitars</p>
+        <p>Joey Vera: Bass</p>
+        <p>Simon Phillips: Drums</p>
+        <p>&nbsp;</p>
+        <p>Produced By Jim Matheos</p>
+        <p>Mixed and Mastered By Jacob Hansen</p>
+        <p>&nbsp;</p>
+        <p>Artwork, Design, and Layout By Simon Ward</p>
+      </div>
+      <div class="mb-6 font-semibold dark:text-slate-200">
+        <hr class="border-slate-700 my-4" />
+        <p>
+          Purchase via <a
+            href="https://www.metalblade.com/kingsofmercia/"
+            target="_blank"
+            class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
+            >metalblade.com/kingsofmercia</a
+          > | <a
+            href="https://amzn.to/4eFhDAw"
+            target="_blank"
+            class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
+            >Amazon.com</a
+          >
+        </p>
+      </div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget: Kings Of Mercia (2022) ****************** -->
+  <Content
+    isBeforeContent
+    isReversed={false}
+    image={{
+      src: '~/assets/images/kings_of_mercia_debut_cover.png',
+      alt: 'Kings Of Mercia - Kings Of Mercia (2022)',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-4 font-heading">Kings Of Mercia</h2>
+      <div class="space-y-4 text-justify">
+        <p>Released on September 23, 2022 via Metal Blade Records</p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="mb-6 font-semibold dark:text-slate-200">
+        <p>Track List</p>
+      </div>
+      <div class="space-y-4 text-justify">
+        <p>
+          1. Wrecking Ball<br />
+          2. Humankind<br />
+          3. Sweet Revenge<br />
+          4. Set the World on Fire<br />
+          5. Too Far Gone<br />
+          6. Liberate Me<br />
+          7. Nowhere Man<br />
+          8. Everyday Angels<br />
+          9. Is It Right?<br />
+          10. Your Life
+        </p>
+      </div>
+      <p>&nbsp;</p>
+      <div class="mb-6 font-semibold dark:text-slate-200">
+        <p>Kings Of Mercia Lineup</p>
+        <p>Steve Overland: Vocals</p>
+        <p>Jim Matheos: Guitars</p>
+        <p>Joey Vera: Bass</p>
+        <p>Simon Phillips: Drums</p>
+        <p>&nbsp;</p>
+        <p>Produced By Jim Matheos</p>
+        <p>Mixed and Mastered By Jacob Hansen</p>
+        <p>&nbsp;</p>
+        <p>Artwork, Design, and Layout By Simon Ward</p>
+      </div>
+      <div class="mb-6 font-semibold dark:text-slate-200">
+        <hr class="border-slate-700 my-4" />
+        <p>
+          Purchase via <a
+            href="https://www.metalblade.com/kingsofmercia/"
+            target="_blank"
+            class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
+            >metalblade.com/kingsofmercia</a
+          > | <a
+            href="https://amzn.to/4wdcGWR"
+            target="_blank"
+            class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
+            >Amazon.com</a
+          >
+        </p>
+      </div>
+    </Fragment>
+  </Content>
+</Layout>
