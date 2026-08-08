@@ -15,6 +15,10 @@ export const headerData = {
       href: getPermalink('/music'),
     },
     {
+      text: 'Videos',
+      href: getPermalink('/videos'),
+    },
+    {
       text: 'Images',
       href: getPermalink('/images'),
     },

@@ -5,6 +5,7 @@ import Note from '~/components/widgets/Note.astro';
 import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { YouTube } from 'astro-embed';
 
 const metadata = {
   title: 'Kings Of Mercia',
@@ -62,16 +63,12 @@ const metadata = {
   >
     <Fragment slot="content">
       Check out the video for the single, "Don't Ask"<br /><br />
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/0TKImWS11VY"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen></iframe>
-      <br /><br />
+      <YouTube
+        id="0TKImWS11VY"
+        title="Don't Ask"
+        class="w-full max-w-[560px] aspect-video rounded-lg overflow-hidden"
+      />
+      <br />
       <iframe
         width="100%"
         height="166"

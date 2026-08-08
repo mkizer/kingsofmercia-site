@@ -1,0 +1,174 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { YouTube } from 'astro-embed';
+
+const metadata = {
+  title: 'Videos | Kings of Mercia',
+  description: 'Official music videos and visualizers for Kings of Mercia',
+};
+
+const videos = [
+  {
+    title: `"Battle Scars" (Official Video)`,
+    album: 'Battle Scars (2024)',
+    videoId: 'dnUiP6zyGns',
+    notes: [
+      `"Battle Scars" is the third single released from the 2024 album "Battle Scars".`,
+      `Official video created by Simon Ward for 1d3ntity (https://identity-media.co.uk).`,
+      `Kings of Mercia are: Jim Matheos (Guitars), Steve Overland (Vocals), Simon Phillips (Drums), Joey Vera (Bass).`,
+      `Published by Metal Blade Records. Buy the album at metalblade.com/kingsofmercia`,
+    ],
+  },
+  {
+    title: `"Aftermath" (Official Video)`,
+    album: 'Battle Scars (2024)',
+    videoId: 'PKRHK94yIWA',
+    notes: [
+      `"Aftermath" is the second single released from the 2024 album "Battle Scars".`,
+      `“Aftermath” is “very dark,” vocalist Steve Overland comments. “It’s about what will be left behind in the end. What will be left on the planet. It’s a very dark track and very dark subject matter.”`,
+      `“I almost didn’t send this one to Steve, and when I did I was certain he wouldn’t like it,” says guitarist Jim Matheos. “I’m glad I did though, as it’s one of my favorites on the album now. It’s quite different for us and I think Steve really shines on this one.”`,
+      `Official video created by Simon Ward for 1d3ntity (https://identity-media.co.uk).`,
+      `Kings of Mercia are: Jim Matheos (Guitars), Steve Overland (Vocals), Simon Phillips (Drums), Joey Vera (Bass).`,
+      `Published by Metal Blade Records. Buy the album at metalblade.com/kingsofmercia`,
+    ],
+  },
+  {
+    title: `"Don't Ask" (Official Video)`,
+    album: 'Battle Scars (2024)',
+    videoId: '0TKImWS11VY',
+    notes: [
+      `"Don't Ask" is the first single released from the 2024 album "Battle Scars".`,
+      `“Don’t Ask” is described by singer Steve Overland as an “angsty love song” with lyrics including: “You could believe in anything you wanted to believe; We were all free to be whatever we wanted to be.”`,
+      `“We found our feet with this album. This is the Kings of Mercia evolving. People think you can pigeonhole rock music fans, but they just like good songs and good music,” Overland says.`,
+      `Official video created by Simon Ward for 1d3ntity (https://identity-media.co.uk).`,
+      `Kings of Mercia are: Jim Matheos (Guitars), Steve Overland (Vocals), Simon Phillips (Drums), Joey Vera (Bass).`,
+      `Published by Metal Blade Records. Buy the album at metalblade.com/kingsofmercia`,
+    ],
+  },
+  {
+    title: `"Humankind" (Bass Playthrough Video)`,
+    album: 'Kings of Mercia (2022)',
+    videoId: 'd7TKcU9TQvI',
+    notes: [
+      `Joey Vera performs "Humankind" from Kings of Mercia's self-titled debut album.`,
+      `Video directed & edited by Stephanie Cabral.`,
+      `Kings of Mercia are: Jim Matheos (Guitars), Steve Overland (Vocals), Simon Phillips (Drums), Joey Vera (Bass).`,
+      `Published by Metal Blade Records. Buy the album at www.metalblade.com/kingsofmercia`,
+    ],
+  },
+  {
+    title: `"Sweet Revenge" (Official Video)`,
+    album: 'Kings of Mercia (2022)',
+    videoId: 'cFQi-I259Uk',
+    notes: [
+      `Vocalist Steve Overland comments:`,
+      `“I love “Sweet Revenge”, it’s a very dark sultry track, all centered around a great heavy riff from Jim. Once again great performances from all the band on this track, one of my favourite K.O.M. tracks”.`,
+      `“We found our feet with this album. This is the Kings of Mercia evolving. People think you can pigeonhole rock music fans, but they just like good songs and good music,” Overland says.`,
+      `Kings of Mercia are: Jim Matheos (Guitars), Steve Overland (Vocals), Simon Phillips (Drums), Joey Vera (Bass).`,
+      `Published by Metal Blade Records. Buy the album at metalblade.com/kingsofmercia`,
+    ],
+  },
+  {
+    title: `"Set the World on Fire" (Guitar Playthrough Video)`,
+    album: 'Kings of Mercia (2022)',
+    videoId: '5Dj2n0CTpf8',
+    notes: [
+      `Jim Matheos performs "Set the World on Fire" from Kings of Mercia's self-titled debut album.`,
+      `Editing by Chris Anderson.`,
+      `Kings of Mercia are: Jim Matheos (Guitars), Steve Overland (Vocals), Simon Phillips (Drums), Joey Vera (Bass).`,
+      `Published by Metal Blade Records. Buy the album at www.metalblade.com/kingsofmercia`,
+    ],
+  },
+  {
+    title: `"Human Kind" (Official Video)`,
+    album: 'Kings of Mercia (2022)',
+    videoId: 'JEyftBvR7Xs',
+    notes: [
+      `Produced and Directed by Russell Cherrington`,
+      `Edited by Adrian C. Andrei`,
+      `Camera by George Nash, Floyd Parker-Horwell, Jeremy Saffer and Stephanie Cabral`,
+      'Production Assistant - Fletcher Smith',
+      `Kings of Mercia are: Jim Matheos (Guitars), Steve Overland (Vocals), Simon Phillips (Drums), Joey Vera (Bass).`,
+      `Published by Metal Blade Records. Buy the album at metalblade.com/kingsofmercia`,
+    ],
+  },
+  {
+    title: `"Liberate Me" (Official Video)`,
+    album: 'Kings of Mercia (2022)',
+    videoId: 'Ce-HVPeiBpE',
+    notes: [
+      `Steve Overland says this about the track: “’Liberate Me’ is another great example of what the Kings of Mercia album represents, a high energy, hard rock song about someone who has lived life selfishly and done many wrongs, but as the years take their toll, they begin to regret their past and want to make things right. Once again, it shows off the great individual talents in the band with great performances by all.”`,
+      'Video edited by Chris Anderson',
+      `Kings of Mercia are: Jim Matheos (Guitars), Steve Overland (Vocals), Simon Phillips (Drums), Joey Vera (Bass).`,
+      `Published by Metal Blade Records. Buy the album at metalblade.com/kingsofmercia`,
+    ],
+  },
+  {
+    title: `"Wrecking Ball" (Official Video)`,
+    album: 'Kings of Mercia (2022)',
+    videoId: 'e9oJrJ4g27U',
+    notes: [
+      `Jim Matheos had this to say about the song: “Wrecking Ball was the first song I wrote for what would become Kings of Mercia, it’s also the opening track on the album. I didn’t have a clear idea of what I wanted to do musically but this one came together very quickly and naturally without too much forethought. The combination of simple but heavy riffs along with Steve’s powerful vocals sets the tone and mood for the rest of the record.”`,
+      'Steve Overland on the track: “Wrecking ball is a great introductory track for what Kings of Mercia are all about, and a great taster for what to expect from the rest of the album. A powerful hard hitting, anthemic rock track, with melody and great individual performances from all the band.”',
+      `Kings of Mercia are: Jim Matheos (Guitars), Steve Overland (Vocals), Simon Phillips (Drums), Joey Vera (Bass).`,
+      `Published by Metal Blade Records. Buy the album at metalblade.com/kingsofmercia`,
+    ],
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">Videos</h1>
+      <p class="mt-4 text-lg text-neutral-400 font-medium">Official Music Videos & Visualizers</p>
+    </div>
+
+    <div class="space-y-12">
+      {
+        videos.map((video) => (
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch border border-neutral-800 bg-neutral-900/30 rounded-xl p-4 sm:p-6 shadow-lg">
+            {/* Left Column: YouTube Facade (Click-to-Play via astro-embed) */}
+            <div class="relative w-full aspect-video rounded-lg overflow-hidden border border-neutral-800 bg-black">
+              <YouTube
+                id={video.videoId}
+                title={video.title}
+                class="w-full h-full aspect-video rounded-lg overflow-hidden"
+              />
+            </div>
+
+            {/* Right Column: Scrollable Notes Section matching video height */}
+            <div class="flex flex-col h-full max-h-[300px] md:max-h-none overflow-hidden rounded-lg border border-neutral-800/80 bg-neutral-900/60 p-5">
+              <div class="mb-3 border-b border-neutral-800 pb-2">
+                <h2 class="text-xl font-bold text-white">{video.title}</h2>
+                <span class="text-xs font-semibold uppercase tracking-wider text-neutral-400">{video.album}</span>
+              </div>
+              <div class="overflow-y-auto flex-1 pr-2 text-sm text-neutral-300 space-y-3 custom-scrollbar">
+                {video.notes.map((paragraph) => (
+                  <p class="leading-relaxed">{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+  }
+</style>
