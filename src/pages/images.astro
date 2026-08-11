@@ -2,14 +2,27 @@
 import Layout from '~/layouts/PageLayout.astro'; // Or your standard AstroWind layout
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import { getGalleryImageMeta } from '~/data/galleryMetadata';
 
-// 1. Automatically grab all images from the gallery directory at build time
-const images = Object.values(
-  import.meta.glob<{ default: ImageMetadata }>('../assets/images/gallery/*.{jpeg,jpg,png,webp}', { eager: true })
-);
+// 1. Automatically grab all images from the gallery directory at build time and sort descending by filename
+const imageModules = import.meta.glob<{ default: ImageMetadata }>('../assets/images/gallery/*.{jpeg,jpg,png,webp}', {
+  eager: true,
+});
+
+const images = Object.entries(imageModules)
+  .sort(([pathA], [pathB]) => pathB.localeCompare(pathA))
+  .map(([path, module]) => {
+    const filename = path.split('/').pop() || '';
+    const meta = getGalleryImageMeta(filename);
+    return {
+      src: module.default,
+      filename,
+      meta,
+    };
+  });
 
 const metadata = {
-  title: 'Images | Kings Of Mercia',
+  title: 'Images | Kings of Mercia',
   description: 'Promotional Photos',
 };
 ---
@@ -20,28 +33,23 @@ const metadata = {
       <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">Images</h1>
       <p class="mt-4 text-lg text-neutral-400 font-medium">Promotional Photos</p>
       <p class="mt-4 text-sm text-neutral-400">
-        All photos courtesy of <a
-          href="https://jeremysaffer.com/"
-          target="_blank"
-          class="text-muted hover:text-gray-700 hover:underline dark:text-gray-400 transition duration-150 ease-in-out"
-          >Jeremy Saffer</a
-        > except where noted.
+        Click to photos to view details including photograher credits.
       </p>
     </div>
 
-    <!-- Masonry Grid Container -->
-    <div class="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
+    <!-- Grid Container (Left-to-Right layout) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 items-start">
       {
         images.map((img, index) => (
-          <div class="break-inside-avoid">
+          <div>
             {/* 1. Clickable Card triggers the dialog via inline JavaScript button behavior */}
             <button
               onclick={`document.getElementById('dialog-${index}').showModal()`}
               class="w-full text-left overflow-hidden rounded-lg border border-neutral-800 bg-neutral-900/30 transition-all duration-300 hover:scale-[1.01] hover:border-neutral-700 block"
             >
               <Image
-                src={img.default}
-                alt="Kings Of Mercia promotional photo"
+                src={img.src}
+                alt={img.meta.description || 'Kings of Mercia promotional photo'}
                 width={600}
                 class="w-full h-auto object-cover"
               />
@@ -59,18 +67,32 @@ const metadata = {
           class="fixed inset-0 z-50 p-0 m-auto bg-transparent backdrop:bg-black/80 backdrop:backdrop-blur-sm max-w-[90vw] max-h-[90vh] rounded-lg overflow-hidden focus:outline-none"
           onclick="this.close()"
         >
-          <form method="dialog" class="relative">
+          <form method="dialog" class="relative flex flex-col justify-between max-h-[90vh]">
             {/* Close Button */}
             <button class="absolute top-4 right-4 z-50 bg-black/60 text-white hover:bg-black/90 w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold transition">
               ✕
             </button>
             {/* High-Res Render inside Modal */}
             <Image
-              src={img.default}
-              alt="Full screen view"
+              src={img.src}
+              alt={img.meta.description || 'Full screen view'}
               width={1400}
-              class="max-w-full max-h-[85vh] object-contain mx-auto"
+              class="max-w-full max-h-[75vh] object-contain mx-auto"
             />
+            {/* Caption Bar */}
+            <div
+              class="w-full bg-neutral-900/90 backdrop-blur-md p-4 text-center border-t border-neutral-800 text-white"
+              onclick="arguments[0]?.stopPropagation()"
+            >
+              <p class="text-sm font-semibold text-neutral-200">
+                {img.meta.credit && <span>Photo by {img.meta.credit}</span>}
+                {img.meta.credit && img.meta.date && <span class="mx-2 text-neutral-500">•</span>}
+                {img.meta.date && <span class="text-neutral-400">{img.meta.date}</span>}
+              </p>
+              {img.meta.description && (
+                <p class="mt-1 text-xs text-neutral-400 max-w-xl mx-auto">{img.meta.description}</p>
+              )}
+            </div>
           </form>
         </dialog>
       ))
