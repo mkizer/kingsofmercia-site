@@ -62,19 +62,20 @@ const {
   {
     disclaimer && (
       <div class="mt-3 flex items-start">
-        <div class="flex mt-0.5">
-          <input
-            id="disclaimer"
-            name="disclaimer"
-            type="checkbox"
-            class="cursor-pointer mt-1 py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
-          />
-        </div>
-        <div class="ml-3">
-          <label for="disclaimer" class="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400">
-            {disclaimer.label}
-          </label>
-        </div>
+        <label
+          for="disclaimer"
+          class="flex items-start cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400"
+        >
+          <span class="flex mt-0.5 mr-3 shrink-0">
+            <input
+              id="disclaimer"
+              name="disclaimer"
+              type="checkbox"
+              class="cursor-pointer mt-1 w-4 h-4 rounded border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 text-primary focus:ring-primary"
+            />
+          </span>
+          <span>{disclaimer.label}</span>
+        </label>
       </div>
     )
   }
@@ -104,18 +105,27 @@ const {
 </form>
 
 <script>
-  document.querySelectorAll('form').forEach((form) => {
-    const disclaimer = form.querySelector('#disclaimer') as HTMLInputElement | null;
-    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+  const setupDisclaimerForms = () => {
+    document.querySelectorAll('form').forEach((form) => {
+      const disclaimer = form.querySelector('#disclaimer') as HTMLInputElement | null;
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
 
-    if (disclaimer && submitBtn) {
-      // Initialize state on load
-      submitBtn.disabled = !disclaimer.checked;
+      if (disclaimer && submitBtn) {
+        const updateState = () => {
+          submitBtn.disabled = !disclaimer.checked;
+        };
 
-      // Handle change events
-      disclaimer.addEventListener('change', () => {
-        submitBtn.disabled = !disclaimer.checked;
-      });
-    }
-  });
+        // Initialize state on load
+        updateState();
+
+        // Handle change, input, and click events
+        disclaimer.addEventListener('change', updateState);
+        disclaimer.addEventListener('input', updateState);
+        disclaimer.addEventListener('click', updateState);
+      }
+    });
+  };
+
+  setupDisclaimerForms();
+  document.addEventListener('astro:page-load', setupDisclaimerForms);
 </script>
